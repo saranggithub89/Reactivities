@@ -6,5 +6,5 @@
 ### Domain
 **This Folder holds Domain Entities**
 
-### Peristence
+### Persistence
 **This Folder holds the Database Context**
