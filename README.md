@@ -1,0 +1,1 @@
+# This is a Sample .NET Core Application for Beginners
