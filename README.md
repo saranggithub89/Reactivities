@@ -1,10 +1,10 @@
 # This is a Sample .NET Core Application for Beginners
 ## The Folder Structure is as created to be aligned with Clean Architecture
 ### API
-** This Folder holds API Endpoints **
+**This Folder holds API Endpoints**
 
 ### Domain
-** This Folder holds Domain Entities **
+**This Folder holds Domain Entities**
 
 ### Peristence
-** This Folder holds the Database Context**
+**This Folder holds the Database Context**
