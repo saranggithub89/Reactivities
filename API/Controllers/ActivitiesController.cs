@@ -28,5 +28,20 @@ namespace API.Controllers
     {
       return await _context.Activities.FindAsync(id);
     }
+
+    [HttpPost]
+    public async Task<int> SaveActivity(Activity activity)
+    {
+      var savedActivity = await _context.Activities.AddAsync(activity);
+      return await _context.SaveChangesAsync();
+    }
+
+    [HttpDelete]
+    public int DeleteActivity(Activity activity)
+    {        
+      _context.Activities.Remove(activity);
+      _context.SaveChanges();
+      return 1;
+    }
   }
 }
