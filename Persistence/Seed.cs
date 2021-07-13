@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Domain;
-
+// using Persistence.Models;
 namespace Persistence
 {
   public class Seed

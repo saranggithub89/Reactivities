@@ -1,11 +1,15 @@
+using System.Reflection;
 using Application.Activities;
 using Application.Core;
+using BL.Service;
+using Domain;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using Persistence;
+using Persistence.Repositories;
 
 namespace API.Extensions
 {
@@ -31,7 +35,10 @@ namespace API.Extensions
         });
       });
       services.AddMediatR(typeof(List.Handler).Assembly);
+      // services.AddMediatR(Assembly.GetCallingAssembly());
       services.AddAutoMapper(typeof(MappingProfiles).Assembly);
+      services.AddTransient<IActivityService, ActivityService>();
+      services.AddTransient<IActivityRepository, ActivityRepository>();
       return services;
     }
   }

@@ -1,8 +1,10 @@
 using System.Threading;
 using System.Threading.Tasks;
+using BL.Service;
 using Domain;
 using MediatR;
-using Persistence;
+// using Persistence;
+// using Persistence.Models;
 
 namespace Application.Activities
 {
@@ -15,18 +17,22 @@ namespace Application.Activities
 
     public class Handler : IRequestHandler<Command>
     {
-      private readonly DataContext _context;
+      private readonly IActivityService _activityService;
+      // private readonly DataContext _context;
 
-      public Handler(DataContext context)
+      public Handler(IActivityService activityService)
       {
-        _context = context;
+        // _context = context;
+        _activityService = activityService;
       }
 
       public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
       {
-        _context.Activities.Add(request.Activity);
-        await _context.SaveChangesAsync();
-        return Unit.Value;
+        // _context.Activities.Add(request.Activity);
+        // await _context.SaveChangesAsync();
+        // return Unit.Value;
+         await _activityService.AddActivityAsync(request.Activity);
+         return Unit.Value;
       }
     }
   }
