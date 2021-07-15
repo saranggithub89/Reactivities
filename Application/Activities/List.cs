@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using AutoMapper;
 // using Application.Models;
 // using Application.Models;
 using BL.Service;
@@ -28,20 +30,28 @@ namespace Application.Activities
     {
       private readonly IActivityService _activityService;
 
+      private readonly IMapper _mapper;
+
       // // private readonly DataContext _context;
 
       // // public Handler(DataContext context)
-      public Handler(IActivityService activityService)
+      public Handler(IActivityService activityService, IMapper mapper)
       {
         // _context = context;
         _activityService = activityService;
+        _mapper = mapper;
       }
 
       public async Task<List<Activity>> Handle(Query request, CancellationToken cancellationToken)
       {
 
         // return await _context.Activities.ToListAsync();
-        return await Task.FromResult(_activityService.GetAllActivitiesAsync());
+        var result = await Task.FromResult(_activityService.GetAllActivitiesAsync());
+        // foreach(var activity in result ) 
+        // {
+        //   Console.WriteLine(activity.Id);
+        // }        
+        return result;
       }
     }
   }
